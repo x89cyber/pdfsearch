@@ -15,27 +15,27 @@ search_term = sys.argv[2]
 def splash():
     ascii_art = '''
 
- ######################################################
-#             _  __                         _          #
-#            | |/ _|                       | |         #
-#   _ __   __| | |_ ___  ___  __ _ _ __ ___| |__       #
-#  | '_ \ / _` |  _/ __|/ _ \/ _` | '__/ __| '_ \      #
-#  | |_) | (_| | | \__ \  __/ (_| | | | (__| | | |     #
-#  | .__/ \__,_|_| |___/\___|\__,_|_|  \___|_| |_|     #
-#  | |                                                 #
-#  |_|                                                 #
-#                                                      #
-#  by x89cyber                                         # 
-#                                                      #
-#  ● Usage: pdfsearch.py [starting dir] [search term]  #
-#  ○ Uses pdftotext and grep to search pdf files for   #
-#    the specified search term                         #
-#  ○ Includes pdf's in zip archives                    #
-#                                                      #
- ######################################################
+ ######################################################################
+#             _  __                         _                          #
+#            | |/ _|                       | |                         #
+#   _ __   __| | |_ ___  ___  __ _ _ __ ___| |__                       #
+#  | '_ \ / _` |  _/ __|/ _ \/ _` | '__/ __| '_ \                      #
+#  | |_) | (_| | | \__ \  __/ (_| | | | (__| | | |                     #
+#  | .__/ \__,_|_| |___/\___|\__,_|_|  \___|_| |_|                     #
+#  | |                                                                 #
+#  |_|                                                                 #
+#                                                                      #
+#  by x89cyber                                                         #  
+#                                                                      #
+#  ● Usage: pdfsearch.py [starting dir] [search term]                  #
+#  ○ Uses pdftotext and grep to search pdf files for                   #
+#    the specified search term                                         #
+#  ○ Includes pdf's in zip archives                                    #
+#                                                                      #
+ ######################################################################
     '''
-    print(f'\033[0m{ascii_art}\033[0m')
-    print(f'Searching {starting_dir} for "{search_term}"...\n')
+    print(ascii_art)
+    print(f'[*] Searching {starting_dir} for "{search_term}"...')
 
 def highlight(text, term, color):
     '''
@@ -44,7 +44,7 @@ def highlight(text, term, color):
     if (color == "RED"): 
         ht = text.replace(term, f'\033[91m{term}\033[0m')
     elif (color == "ORANGE"):
-        ht = text.replace(term, f'\033[33m{term}\033[0m')
+        ht = text.replace(term, f'\033[1m\033[38;5;208m{term}\033[0m')
     elif (color == "LIME"):
         ht = text.replace(term, f'\033[32m{term}\033[0m')
     else: return text
@@ -84,7 +84,7 @@ def search_pdf(pdf_file_path, temp_dir):
 
         if output:
             pdf = pdf_file_path.replace(temp_dir, "") #remove the temp_dir from the file path if it is there (it is for extracted zip file)
-            print(f"{highlight(pdf, pdf, 'ORANGE')}:\n{highlight(output, search_term, 'RED')}")  
+            print(f"{highlight('[+]','[+]','ORANGE')} {pdf}:\n{highlight(output, search_term, 'RED')}")  
 
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -92,7 +92,8 @@ def search_pdf(pdf_file_path, temp_dir):
 def main():
     splash()
     temp_dir = tempfile.mkdtemp() #create a temp directory for extracting zip files
-    
+    print(f'[*] Creating temp directory {temp_dir} for extracted zip files...\n')
+
     #find all zip files and pdf's in the starting directory 
     zips = find_files(".zip")
     pdfs = find_files(".pdf")
@@ -109,7 +110,9 @@ def main():
     for p in pdfs:
         search_pdf(p, temp_dir)
     
+    print(f'[*] Deleting temp directory {temp_dir} and all contents...')
     os.system('rm -fr temp_dir') #remove the temp directory
+    print('[*] Your search is complete!\n')
 
 if __name__ == "__main__":
     main()
