@@ -1,5 +1,5 @@
 # pdfsearch
-Search pdf files recursively for a specified search term starting at a specified search path.  If zip files are encountered in the search path that contain pdf files in the archive they will be extracted and searched.
+Search pdf files recursively for a specified search term starting at a specified search path.  If zip files are encountered in the search path that contain pdf files they will be extracted and searched.
 
 ### Requirements
 #### Python
