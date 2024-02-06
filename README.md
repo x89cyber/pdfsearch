@@ -3,9 +3,9 @@ Search pdf files recursively for a specified search term starting at a specified
 
 ### Requirements
 #### Python
-This script was developed with python3 and requires the ```tempfile``` and ```zipfile``` libraries
+This script was developed with python3 and requires the ```tempfile``` and ```zipfile``` libraries.
 #### Linux
-This script uses ```pdftotext``` and ```grep``` to perform the searching at the OS level
+This script uses ```pdftotext``` and ```grep``` to perform the search.
 
 ### Usage
 ```
@@ -16,4 +16,4 @@ python3 pdfsearch.py [starting directory] [search term]
 If a match is found the path to the pdf file is output along with the line number and line text that contains the match.
 
 ### Cleanup
-A temp directory is created under /tmp that is cleaned up before exiting
+A temp directory is created under /tmp that is cleaned up before exiting.
