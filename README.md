@@ -7,6 +7,11 @@ This script was developed with python3 and requires the ```tempfile``` and ```zi
 #### Linux
 This script uses ```pdftotext``` and ```grep``` to perform the search.
 
+```
+sudo apt-get update
+sudo apt-get install poppler-utils
+```
+
 ### Usage
 ```
 python3 pdfsearch.py [starting directory] [search term]
