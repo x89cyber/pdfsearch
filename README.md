@@ -16,4 +16,4 @@ python3 pdfsearch.py [starting directory] [search term]
 If a match is found the path to the pdf file is output along with the line number and line text that contains the match.
 
 ### Cleanup
-A temp directory is created under /tmp the is cleaned up before exiting
+A temp directory is created under /tmp that is cleaned up before exiting
