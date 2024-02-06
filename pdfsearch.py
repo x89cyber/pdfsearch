@@ -42,11 +42,11 @@ def highlight(text, term, color):
     Highlight the term that appears in the text with the color specified: RED, ORANGE, LIME
     '''
     if (color == "RED"): 
-        ht = text.replace(term, f'\033[91m{term}\033[0m')
+        ht = text.replace(term, f'\033[1;31m{term}\033[0m')
     elif (color == "ORANGE"):
         ht = text.replace(term, f'\033[1m\033[38;5;208m{term}\033[0m')
     elif (color == "LIME"):
-        ht = text.replace(term, f'\033[32m{term}\033[0m')
+        ht = text.replace(term, f'\033[1;32m{term}\033[0m')
     else: return text
     return ht
 
@@ -84,7 +84,7 @@ def search_pdf(pdf_file_path, temp_dir):
 
         if output:
             pdf = pdf_file_path.replace(temp_dir, "") #remove the temp_dir from the file path if it is there (it is for extracted zip file)
-            print(f"{highlight('[+]','[+]','ORANGE')} {pdf}:\n{highlight(output, search_term, 'RED')}")  
+            print(f"{highlight('[+]','[+]','ORANGE')} {pdf}:\n{highlight(output, search_term, 'RED')}", end="")  
 
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -92,7 +92,7 @@ def search_pdf(pdf_file_path, temp_dir):
 def main():
     splash()
     temp_dir = tempfile.mkdtemp() #create a temp directory for extracting zip files
-    print(f'[*] Creating temp directory {temp_dir} for extracted zip files...\n')
+    print(f'[*] Creating temp directory {temp_dir} for extracted zip files...')
 
     #find all zip files and pdf's in the starting directory 
     zips = find_files(".zip")
