@@ -112,7 +112,7 @@ def main():
     
     print(f'[*] Deleting temp directory {temp_dir} and all contents...')
     os.system('rm -fr temp_dir') #remove the temp directory
-    print('[*] Your search is complete!\n')
+    print('[*] Your search is complete!')
 
 if __name__ == "__main__":
     main()
