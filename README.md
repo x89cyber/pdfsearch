@@ -1,5 +1,5 @@
 # pdfsearch
-Search pdf files and pdf files in zip archives
+Search pdf files recursively for a specified search term starting at a specified search path.  If zip files are encountered in the search path that contain pdf files in the archive they will be extracted and searched.
 
 ### Requirements
 #### Python
@@ -11,6 +11,9 @@ This script uses pdftotext and grep to perform the searching at the OS level
 ```
 python3 pdfsearch.py [starting directory] [search term]
 ```
+
+### Output
+If a match is found the path to the pdf file is output along with the line number and line text that contains the match.
 
 ### Cleanup
 A temp directory is created under /tmp the is cleaned up before exiting
